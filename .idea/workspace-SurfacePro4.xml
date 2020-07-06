@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0490f95-f6aa-43a0-b779-888c17e10708" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Code" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1TYmZOX1FEcA5XitviMkBEBJlL4" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="settings.webpack" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings>
+        <option name="useSoftWraps" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SoapClancy\OneDrive\PhD\01-PhDProject\08-PV-ENG-6078\MyProject\Code" />
+      <recent name="C:\Users\SoapClancy\OneDrive\PhD\01-PhDProject\08-PV\MyProject\Code" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SoapClancy\OneDrive\PhD\01-PhDProject\08-PV\MyProject\Code" />
+      <recent name="C:\Users\s1572779\OneDrive\PhD\01-PhDProject\08-PV\MyProject\Code\Writting" />
+      <recent name="C:\Users\s1572779\OneDrive\PhD\01-PhDProject\08-PV\MyProject\Code\Ploting" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="correlation_modeling_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/correlation_modeling_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.correlation_modeling_main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0490f95-f6aa-43a0-b779-888c17e10708" name="Default Changelist" comment="" />
+      <created>1573645457598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573645457598</updated>
+      <workItem from="1573645460652" duration="11062000" />
+      <workItem from="1573741598736" duration="3688000" />
+      <workItem from="1573813523510" duration="16063000" />
+      <workItem from="1574003345700" duration="11642000" />
+      <workItem from="1574032346939" duration="383000" />
+      <workItem from="1574074003215" duration="13086000" />
+      <workItem from="1574087313704" duration="1003000" />
+      <workItem from="1574094061471" duration="4528000" />
+      <workItem from="1574111894968" duration="5211000" />
+      <workItem from="1574158660825" duration="15018000" />
+      <workItem from="1574245858965" duration="28110000" />
+      <workItem from="1574284741172" duration="11647000" />
+      <workItem from="1574329834504" duration="46440000" />
+      <workItem from="1574386763126" duration="1332000" />
+      <workItem from="1574420520365" duration="5187000" />
+      <workItem from="1574436603389" duration="29164000" />
+      <workItem from="1574506273103" duration="25365000" />
+      <workItem from="1574564448149" duration="7417000" />
+      <workItem from="1574572063435" duration="239000" />
+      <workItem from="1574572353910" duration="173000" />
+      <workItem from="1574572542763" duration="120000" />
+      <workItem from="1574572676902" duration="154000" />
+      <workItem from="1574572845083" duration="350000" />
+      <workItem from="1574573227038" duration="1833000" />
+      <workItem from="1574596496872" duration="28708000" />
+      <workItem from="1574642149612" duration="758000" />
+      <workItem from="1574676092029" duration="7409000" />
+      <workItem from="1574686517237" duration="724000" />
+      <workItem from="1574692653658" duration="4666000" />
+      <workItem from="1574697345450" duration="916000" />
+      <workItem from="1574698277021" duration="3879000" />
+      <workItem from="1574723801110" duration="8978000" />
+      <workItem from="1574772855367" duration="13736000" />
+      <workItem from="1574804846378" duration="1000" />
+      <workItem from="1574804851771" duration="6690000" />
+      <workItem from="1574855160062" duration="4499000" />
+      <workItem from="1574860336739" duration="24353000" />
+      <workItem from="1574937609827" duration="8138000" />
+      <workItem from="1574949346421" duration="6099000" />
+      <workItem from="1574955466202" duration="978000" />
+      <workItem from="1574965002248" duration="1545000" />
+      <workItem from="1574979259497" duration="8512000" />
+      <workItem from="1574988108592" duration="961000" />
+      <workItem from="1575022253481" duration="1558000" />
+      <workItem from="1575023826692" duration="19358000" />
+      <workItem from="1575070321325" duration="1971000" />
+      <workItem from="1575204980427" duration="285000" />
+      <workItem from="1575205317049" duration="918000" />
+      <workItem from="1575206262137" duration="290000" />
+      <workItem from="1575206898755" duration="530000" />
+      <workItem from="1575207454993" duration="3578000" />
+      <workItem from="1575237625887" duration="1600000" />
+      <workItem from="1575302008629" duration="755000" />
+      <workItem from="1575366569578" duration="54000" />
+      <workItem from="1575366688712" duration="7012000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Code$UnivariateAnalysis_Class.coverage" NAME="UnivariateAnalysis_Class Coverage Results" MODIFIED="1574632028683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Code$simple_filtering_Func.coverage" NAME="simple_filtering_Func Coverage Results" MODIFIED="1574347832923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Filtering" />
+    <SUITE FILE_PATH="coverage/Code$BivariateAnalysis_Class.coverage" NAME="BivariateAnalysis_Class Coverage Results" MODIFIED="1574510013170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Code$main.coverage" NAME="main Coverage Results" MODIFIED="1575206519844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Code$filtering_main.coverage" NAME="filtering_main Coverage Results" MODIFIED="1574552879263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Filtering" />
+    <SUITE FILE_PATH="coverage/Code$PVPanel_Class.coverage" NAME="PVPanel_Class Coverage Results" MODIFIED="1574526169570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Code$Copula_Class.coverage" NAME="Copula_Class Coverage Results" MODIFIED="1574868191836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Correlation_Modeling" />
+    <SUITE FILE_PATH="coverage/Code$float_precision_control_Func.coverage" NAME="float_precision_control_Func Coverage Results" MODIFIED="1574268894062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Hi_Accuracy_float" />
+    <SUITE FILE_PATH="coverage/Code$temp.coverage" NAME="temp Coverage Results" MODIFIED="1574464413199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Code$correlation_modeling_main.coverage" NAME="correlation_modeling_main Coverage Results" MODIFIED="1575379949472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
