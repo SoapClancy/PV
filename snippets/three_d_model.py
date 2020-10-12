@@ -49,6 +49,6 @@ if __name__ == '__main__':
     # e.g., CDF
     pdf_tuple[0].plot_cdf_like_ndarray(title='CDF')
     # e.g., inverseCDF
-    series(np.arange(0, 1.001, 0.001),
-           pdf_tuple[0].find_nearest_inverse_cdf(np.arange(0, 1.001, 0.001)),
+    series(np.arange(0, 1.0001, 0.0001),
+           pdf_tuple[0].find_nearest_inverse_cdf(np.arange(0, 1.0001, 0.0001)),
            title='inverseCDF')
