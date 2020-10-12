@@ -24,6 +24,7 @@
       <w>ncol</w>
       <w>ndarray</w>
       <w>pvlog</w>
+      <w>renormalise</w>
       <w>sklearn</w>
       <w>tdms</w>
       <w>ufunc</w>

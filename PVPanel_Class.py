@@ -2,90 +2,69 @@ import pandas as pd
 import numpy as np
 from numpy import ndarray
 import Ploting
-from Ploting.fast_plot_Func import scatter, hist
+from Ploting.fast_plot_Func import *
 from matplotlib import pyplot as plt
-from project_path_Var import project_path_
-from Time_Processing.format_convert_Func import datetime64_ndarray_to_datetime_tuple, np_datetime64_to_datetime
-from Writting.collections_Func import put_list_png_file_into_a_docx, put_all_png_in_a_path_into_a_docx
-import os
-import re
+from project_utils import project_path_
 import copy
 from pandas.plotting import register_matplotlib_converters
-from Time_Processing.SynchronousTimeSeriesData_Class import SynchronousTimeSeriesData
+# from Time_Processing.SynchronousTimeSeriesData_Class import SynchronousTimeSeriesData
 from File_Management.load_save_Func import load_exist_npy_file_otherwise_run_and_save, \
     load_exist_pkl_file_otherwise_run_and_save, save_npy_file, load_pkl_file, save_pkl_file
-from File_Management.path_and_file_management_Func import try_to_find_file, try_to_find_path_otherwise_make_one
+from File_Management.path_and_file_management_Func import try_to_find_file, try_to_find_folder_path_otherwise_make_one
 from typing import Union, Tuple
 from BivariateAnalysis_Class import Bivariate, BivariateOutlier, MethodOfBins
 from Filtering.sklearn_novelty_and_outlier_detection_Func import use_isolation_forest
 from UnivariateAnalysis_Class import CategoryUnivariate, UnivariateGaussianMixtureModel, UnivariatePDFOrCDFLike
-from Correlation_Modeling.Copula_Class import GMCM, EmpiricalCopulaEx, EmpiricalCopula
+from Correlation_Modeling.Copula_Class import GMCM
 from HighDimensionalAnalysis_Class import HighDimensionalAnalysis
+from PhysicalInstance_Class import PhysicalInstanceDataFrame
 
 register_matplotlib_converters()
 
 
-class PVPanel:
-    __slots__ = ('manufacturer', 'configuration', 'measurements', 'outlier_category')
-    results_path = project_path_ + 'Data/Results/'
-    time_resolution = 5
+class PVPanel(PhysicalInstanceDataFrame):
+    results_path = project_path_ / 'Data/Results/'
+
+    __slots__ = ('manufacturer', 'configuration')
+
+    @property
+    def _constructor(self):
+        return super()._constructor
+
+    @property
+    def _constructor_expanddim(self):
+        return super()._constructor_expanddim
+
+    @property
+    def _constructor_sliced(self):
+        return super()._constructor_sliced
 
     """
-    PV大类，包含各种方法
     manufacturer: PV的名字/厂商
     configuration：open 或 closed 或 Tracker
-    measurements: 一个pd.DataFrame，包含同步测量的数据，DataFrame.columns包含:
-        'ID',
-        'time',
-        'rank in a day',
-        'power output',
-        'panel temperature',
-        'environmental temperature',
-        'fixed irradiation',
-        'tracker irradiation',
-        'irradiation',→这个就是'fixed irradiation'或者'tracker irradiation'
-        'wind speed'
-    outlier_category: 异常值分类
     """
 
-    def __init__(self, *, manufacturer: str, configuration: str, measurements: pd.DataFrame,
-                 outlier_category: ndarray = None):
+    def __init__(self, *args, manufacturer: str, configuration: str, **kwargs):
+        super().__init__(*args, **kwargs)
+
         self.manufacturer = manufacturer  # type: str
         self.configuration = configuration  # type: str
-        self.measurements = measurements  # type:pd.DataFrame
-        if configuration == 'tracker':
-            self.measurements['irradiation'] = self.measurements['tracker irradiation']
-        else:
-            self.measurements['irradiation'] = self.measurements['fixed irradiation']
-        self.outlier_category = outlier_category or self.identify_outlier()
 
     def __str__(self):
-        t1 = np_datetime64_to_datetime(self.measurements['time'].values[0]).strftime('%Y-%m-%d %H.%M')
-        t2 = np_datetime64_to_datetime(self.measurements['time'].values[-1]).strftime('%Y-%m-%d %H.%M')
-        return "{} PV panel in {} configuration from {} to {}".format(self.manufacturer,
-                                                                      self.configuration,
-                                                                      t1,
-                                                                      t2)
+        t1 = eval("self.index[0].strftime('%Y-%m-%d %H.%M')")
+        t2 = eval("self.index[-1].strftime('%Y-%m-%d %H.%M')")
+        return f"{self.manufacturer} PV panel in {self.configuration} configuration from {t1} to {t2}"
 
-    def fast_plot_and_write(self, show_category_as_in_outlier: Union[int, tuple], **kwargs):
-        """
-        快速画变量关系图并写报告
-        """
-        self.fast_plot_bivariate_scatter(show_category_as_in_outlier, **kwargs)
-        # self.fast_plot_time_rank_to_power()
-        # 生成报告
-        files = os.listdir(self.results_path)
-        files = [x for x in files if re.search(self.manufacturer + ' ' + self.configuration, x)]
-        files = [self.results_path + x for x in files]
-        files = sorted(files, key=lambda x: os.path.getctime(x))
-        put_list_png_file_into_a_docx(files, self.results_path + self.manufacturer + ' ' + self.configuration + '.docx')
-
-    @classmethod
-    def cal_recording_rank_in_a_day(cls, date_and_time: pd.Series) -> pd.DataFrame:
-        date_and_time = copy.deepcopy(date_and_time.values)
-        rank_in_a_day = [int(x.hour * 12 + int(x.minute / cls.time_resolution))
-                         for x in datetime64_ndarray_to_datetime_tuple(date_and_time)]
-        return pd.DataFrame({'rank_in_a_day': rank_in_a_day})
+    @property
+    def default_results_saving_path(self):
+        saving_path = {
+            "outlier": self.results_path / f"Filtering/{self.__str__()} identify_outlier_results.npy",
+            "Copula folder": self.results_path / f"Copula/{self.__str__()}/"
+                                                 f"{self.predictor_names}_TO_{self.dependant_names}/"
+        }
+        for x in saving_path.values():
+            try_to_find_folder_path_otherwise_make_one(x.parent)
+        return saving_path
 
     def __prepare_fitting_conditional_probability_model(self, predictor_var_name_in_tuple: Tuple[str, ...],
                                                         used_outlier_category_for_modelling: Tuple[
@@ -124,7 +103,7 @@ class PVPanel:
         path_ = self.results_path + 'conditional_probability_by_gmm/' + self.__str__() + '/predictor=' + str(
             predictor_var_name_in_tuple) + ' category=' + str(
             used_outlier_category_for_modelling) + ' bin_step={}/'.format(bin_step)
-        try_to_find_path_otherwise_make_one(path_)
+        try_to_find_folder_path_otherwise_make_one(path_)
         # 准备fitting data
         predictor_var, dependent_var, predictor_var_name, dependent_var_name = \
             self.__prepare_fitting_conditional_probability_model(predictor_var_name_in_tuple,
@@ -167,7 +146,6 @@ class PVPanel:
                                             save_file_=path_ + 'bin = {} cdf'.format(this_bin['this_bin_boundary']))
                     plt.close()
             # 写入docx
-            put_all_png_in_a_path_into_a_docx(path_, path_ + self.__str__() + '.docx')
 
         return fitting_results
 
@@ -250,7 +228,7 @@ class PVPanel:
         path_ = self.results_path + 'joint_probability_model_by_gmcm/' + self.__str__() + '/var=' + str(
             var_name_in_tuple) + ' category=' + str(
             used_outlier_category_for_modelling) + '/'
-        try_to_find_path_otherwise_make_one(path_)
+        try_to_find_folder_path_otherwise_make_one(path_)
 
         # 准备fitting data
         data_to_be_fitted = self.__prepare_fitting_joint_probability_model(var_name_in_tuple,
@@ -260,32 +238,6 @@ class PVPanel:
              marginal_distribution_file_=path_ + 'marginal.pkl',
              gmcm_fitting_k=20,
              gmcm_max_fitting_iteration=2500)
-
-    def fit_joint_probability_model_by_ecopula(self,
-                                               var_name_in_tuple=(
-                                                       'power output', 'irradiation', 'panel temperature'), *,
-                                               used_outlier_category_for_modelling: Tuple[int, ...]):
-        """
-        拟合一个经验Copula联合概率模型
-        :param var_name_in_tuple: 声明联合概率模型的var_name，通过self.__prepare_fitting_joint_probability_model()方法
-        查找到var_name对应的measurements，默认第一维是'power output'
-        :param used_outlier_category_for_modelling: 选择用于模型拟合的outlier
-        :return: EmpiricalCopula
-        """
-        path_ = self.results_path + 'joint_probability_model_by_ecopula/' + self.__str__() + '/var=' + str(
-            var_name_in_tuple) + ' category=' + str(
-            used_outlier_category_for_modelling) + '/'
-        try_to_find_path_otherwise_make_one(path_)
-        # 准备fitting data
-        data_to_be_fitted = self.__prepare_fitting_joint_probability_model(var_name_in_tuple,
-                                                                           used_outlier_category_for_modelling)
-
-        @load_exist_pkl_file_otherwise_run_and_save(path_ + 'model.pkl')
-        def load_or_make():
-            return EmpiricalCopulaEx(ndarray_data=data_to_be_fitted,
-                                     marginal_distribution_file_=path_ + 'marginal.pkl').ecopula
-
-        return load_or_make
 
     @staticmethod
     def __prepare_calculating_joint_probability_model(var_name_in_tuple, predictor_var_name_in_tuple,
@@ -325,33 +277,6 @@ class PVPanel:
                                                                 conditional_var_idx=tuple(conditional_var_idx))
         # 将gmcm_conditional_cdf转成UnivariateCDFLike类以便分析(采样，算mean_，算inverse_cdf)
         return tuple(UnivariatePDFOrCDFLike(x) for x in gmcm_conditional_cdf)
-
-    def cal_power_output_using_joint_probability_model_by_ecopula(self,
-                                                                  var_name_in_tuple=(
-                                                                          'power output', 'irradiation',
-                                                                          'panel temperature'),
-                                                                  *, predictor_var_name_in_tuple: Tuple[str, ...],
-                                                                  used_outlier_category_for_modelling: Tuple[int, ...],
-                                                                  predictor_var_value_in_tuple: Tuple[ndarray, ...]) \
-            -> Tuple[UnivariatePDFOrCDFLike, ...]:
-        path_ = self.results_path + 'joint_probability_model_by_ecopula/' + self.__str__() + '/var=' + str(
-            var_name_in_tuple) + ' category=' + str(
-            used_outlier_category_for_modelling) + '/'
-        ndarray_data_like, conditional_var_idx = \
-            self.__prepare_calculating_joint_probability_model(var_name_in_tuple,
-                                                               predictor_var_name_in_tuple,
-                                                               predictor_var_value_in_tuple)
-        ecopula = load_pkl_file(path_ + 'model.pkl')
-        if ecopula is None:
-            raise Exception("There is no model associated with the input parameters, please fit as first")
-        # 计算gmcm_conditional_cdf
-        model = EmpiricalCopulaEx(marginal_distribution_file_=path_ + 'marginal.pkl',
-                                  ecopula=ecopula)
-
-        ecopula_conditional_cdf = model.cal_copula_conditional_cdf(ndarray_data_like,
-                                                                   conditional_var_idx=tuple(conditional_var_idx))
-        # 将gmcm_conditional_cdf转成UnivariateCDFLike类以便分析(采样，算mean_，算inverse_cdf)
-        return tuple(UnivariatePDFOrCDFLike(x) for x in ecopula_conditional_cdf)
 
     def fast_plot_bivariate_scatter(self, show_category_as_in_outlier: Union[Tuple[int, ...], str], **kwargs):
         """
