@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.dates as mdates
 from collections import ChainMap
 import copy
+from File_Management.load_save_Func import *
 
 MANUFACTURER = ('Sanyo', 'STP', 'DF', 'Yingli')
 CONFIGURATION = ('open', 'closed', 'tracker')
@@ -29,7 +30,7 @@ def load_raw_data(raw_data_excel_path=project_path_ / 'Data/Raw_measurements/',
     return read_results
 
 
-def initialise_pv_using_raw_data_and_then_filter():
+def initialise_pv_using_raw_data(try_to_filer_using_2019_results: bool = False):
     # %% 载入原始数据
     raw_data = load_raw_data()
     raw_data.set_index('Time', inplace=True)
@@ -75,6 +76,9 @@ def initialise_pv_using_raw_data_and_then_filter():
                                      'environmental temperature'),
                     dependant_names=('power output',)
                 )
+                if try_to_filer_using_2019_results:
+                    outlier_mask = load_npy_file(this_pv_panel_obj.default_results_saving_path['outlier'])
+                    this_pv_panel_obj[outlier_mask != 0] = np.nan
                 all_pv_dict[this_manufacturer][this_configuration] = this_pv_panel_obj
                 all_pv_list.append(this_pv_panel_obj)
 

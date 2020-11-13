@@ -1,4 +1,4 @@
-from prepare_datasets import initialise_pv_using_raw_data_and_then_filter
+from prepare_datasets import initialise_pv_using_raw_data
 from File_Management.load_save_Func import *
 from File_Management.path_and_file_management_Func import *
 from PVPanel_Class import PVPanel
@@ -14,7 +14,7 @@ To restore the path_limit, call File_Management.path_management_Func.restore_win
 """
 remove_win10_max_path_limit()
 
-ALL_PV_PANELS = initialise_pv_using_raw_data_and_then_filter()[1]
+ALL_PV_PANELS = initialise_pv_using_raw_data()[1]
 
 
 def fit_3_d_model(this_pv_obj: PVPanel):
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # Example:
     # solar irradiance = 500;
     # environmental temperature = 10
-    _this_pv_obj = ALL_PV_PANELS[0]
+    _this_pv_obj = ALL_PV_PANELS[0]  # type: PVPanel
     print(f"Model is from {_this_pv_obj}")
     pdf_tuple = _this_pv_obj.obtain_pdf_by_copula(
         THREE_DIM_CVINE_CONSTRUCTION,  # Define Vine structure

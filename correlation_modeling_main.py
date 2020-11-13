@@ -1,10 +1,10 @@
-from prepare_datasets import initialise_pv_using_raw_data_and_then_filter
+from prepare_datasets import initialise_pv_using_raw_data
 import numpy as np
 from PVPanel_Class import PVPanel
 
 
 def run_correlation_modeling_main():
-    all_pv_panel = initialise_pv_using_raw_data_and_then_filter()
+    all_pv_panel = initialise_pv_using_raw_data()
     manufacturer = ('Sanyo', 'STP', 'DF', 'Yingli')
     configuration = ('open', 'closed', 'tracker')
 
@@ -33,7 +33,7 @@ def run_correlation_modeling_main():
 
 
 if __name__ == '__main__':
-    all_pv_panel = initialise_pv_using_raw_data_and_then_filter()
+    all_pv_panel = initialise_pv_using_raw_data()
     this_pv = all_pv_panel['Sanyo']['open']  # type: PVPanel
 
     # 条件概率模型的fit和应用
